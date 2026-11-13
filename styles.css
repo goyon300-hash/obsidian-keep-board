@@ -1,0 +1,244 @@
+/* Keep Board - Google Keep-style notes board */
+
+/* Main container */
+.keep-board-container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+}
+
+/* Toolbar */
+.keep-toolbar {
+	display: flex;
+	align-items: center;
+	padding: 16px;
+	border-bottom: 1px solid var(--border-color);
+	background-color: var(--background-primary);
+}
+
+/* Search */
+.keep-search-wrapper {
+	position: relative;
+	flex: 1;
+	max-width: 600px;
+}
+
+.keep-search-icon {
+	position: absolute;
+	left: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--text-muted);
+	display: flex;
+	align-items: center;
+}
+
+.keep-search-input {
+	width: 100%;
+	padding: 10px 12px 10px 36px;
+	border: 1px solid var(--border-color);
+	border-radius: 24px;
+	background-color: var(--background-secondary);
+	color: var(--text-normal);
+	font-size: 14px;
+	outline: none;
+	transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.keep-search-input:focus {
+	border-color: var(--interactive-accent);
+	box-shadow: 0 0 0 2px rgba(92, 126, 242, 0.1);
+}
+
+.keep-search-input::placeholder {
+	color: var(--text-muted);
+}
+
+/* Board */
+.keep-board {
+	flex: 1;
+	min-height: 0;
+	overflow-y: auto;
+	padding: 16px;
+	background-color: var(--background-secondary);
+}
+
+/* Card */
+.keep-card {
+	background-color: var(--background-primary);
+	border-radius: 8px;
+	padding: 16px;
+	cursor: pointer;
+	transition: box-shadow 0.2s, transform 0.1s;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.keep-card:hover {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	transform: translateY(-1px);
+}
+
+.keep-card:active {
+	transform: translateY(0);
+}
+
+/* Card header */
+.keep-card-header {
+	margin-bottom: 8px;
+}
+
+.keep-card-title {
+	font-weight: 600;
+	font-size: 15px;
+	color: var(--text-normal);
+	line-height: 1.4;
+}
+
+/* Card content */
+.keep-card-content {
+	font-size: 13px;
+	color: var(--text-muted);
+	line-height: 1.5;
+	margin-bottom: 8px;
+	max-height: 120px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Card footer */
+.keep-card-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.keep-card-date {
+	font-size: 11px;
+	color: var(--text-faint);
+}
+
+/* Keep native focus controls visually consistent with the original icons. */
+.keep-focus-close,
+.keep-focus-back {
+	border: 0;
+	padding: 0;
+	background: transparent;
+}
+
+/* Focus mode overlay */
+.keep-focus-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--background-primary);
+	display: flex;
+	flex-direction: column;
+	z-index: 100;
+	animation: keep-slide-in 0.2s ease-out;
+}
+
+@keyframes keep-slide-in {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+/* Focus mode close button */
+.keep-focus-close {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: var(--text-muted);
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.keep-focus-close:hover {
+	background-color: var(--background-secondary);
+	color: var(--text-normal);
+}
+
+/* Focus mode back button (mobile) */
+.keep-focus-back {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: var(--text-muted);
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.keep-focus-back:hover {
+	background-color: var(--background-secondary);
+	color: var(--text-normal);
+}
+
+/* Focus mode title */
+.keep-focus-title {
+	padding: 60px 24px 16px;
+	font-size: 24px;
+	font-weight: 600;
+	color: var(--text-normal);
+}
+
+/* Focus mode content */
+.keep-focus-content {
+	flex: 1;
+	padding: 16px 24px 24px;
+	overflow-y: auto;
+	font-size: 15px;
+	line-height: 1.6;
+	color: var(--text-normal);
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+	.keep-focus-back {
+		display: flex;
+	}
+
+	.keep-focus-title {
+		font-size: 20px;
+		padding: 60px 16px 12px;
+	}
+
+	.keep-focus-content {
+		padding: 12px 16px 16px;
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 480px) {
+	.keep-toolbar {
+		padding: 12px;
+	}
+
+	.keep-board {
+		padding: 12px;
+	}
+
+	.keep-card {
+		padding: 12px;
+	}
+}

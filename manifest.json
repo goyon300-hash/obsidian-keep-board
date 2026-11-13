@@ -1,0 +1,9 @@
+{
+  "id": "keep-board",
+  "name": "Keep Board",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "A Google Keep-style notes board with automatic masonry layout, dynamic scrolling boundaries, full-screen focus mode, and responsive design.",
+  "author": "Mateusz",
+  "isDesktopOnly": false
+}
